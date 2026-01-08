@@ -32,7 +32,7 @@ jobs:
       uses: aquasecurity/trivy-action@master
       with:
         scan-type: 'fs'
-        exit-code: '0' # Update temporarily to 0 but revert later for Fails PR if critical issues are found   
+        exit-code: '1' # Fails PR if critical issues are found   
 
     - name: 4. Safety Audit
       uses: pyupio/safety-action@v1
