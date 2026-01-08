@@ -3,6 +3,7 @@ name: Python Application CI
 on:
   push:
     branches: [ "main" ]
+  workflow_dispatch:     # to allow manual run
 
 jobs:
   build:
@@ -38,7 +39,7 @@ jobs:
       run: |
         pip install safety
         safety check --key ${{ secrets.SAFETY_API_KEY }}
-        
+
       # Code below is ok but not for Azure so comment it out  
       # uses: pyupio/safety-action@v1        
       # with:
