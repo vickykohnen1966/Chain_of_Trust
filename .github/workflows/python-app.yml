@@ -8,9 +8,23 @@ on:
 jobs:
   build:
     runs-on: self-hosted # changed from ubuntu-latest
+    env:
+      # Force Git to ignore the system and global config files entirely
+      GIT_CONFIG_NOSYSTEM: 1
+      GIT_CONFIG_GLOBAL: /dev/null
+
     steps:
     - name: Checkout Code
       uses: actions/checkout@v4
+
+    - name: Verify no hooks were triggered
+      run: |
+        # If a hook modified app.py, this will fail the build
+        git status --porcelain
+        if [ -n "$(git status --porcelain)" ]; then
+          echo "Security Alert: Files modified post-checkout!"
+          exit 1
+        fi
 
     # - name: Debug PATH
     #   run: |
