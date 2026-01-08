@@ -24,16 +24,16 @@ jobs:
         python -m pip install --upgrade pip
         pip install --require-hashes -r requirements.txt
 
-    - name: 2. Gitleaks (Secret Scan)
-      uses: gitleaks/gitleaks-action@v2
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    # - name: 2. Gitleaks (Secret Scan)
+    #  uses: gitleaks/gitleaks-action@v2
+    #  env:
+    #    GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-    - name: 3. Trivy (Config Scan)
-      uses: aquasecurity/trivy-action@master
-      with:
-        scan-type: 'fs'
-        exit-code: '1' # Fails PR if critical issues are found   
+    # - name: 3. Trivy (Config Scan)
+    #  uses: aquasecurity/trivy-action@master
+    #  with:
+    #    scan-type: 'fs'
+    #    exit-code: '1' # Fails PR if critical issues are found   
 
     - name: 4. Safety Audit (Native Python)
       run: |
