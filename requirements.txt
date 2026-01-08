@@ -1,3 +1,3 @@
 # Strict pinning for the source file
 utils_lib/dist/utils_lib-0.1.tar.gz --hash=sha256:d63fc9678b4f5bfeee48ad940c06da249b73eb2dd92cf67f35abfcbedb1d3947
-requesst==2.31.0 --hash=sha256:58cd214ed97e413c1bc317674e311170757df695ad1f0d36636780775d72f91a
+request==2.31.0 --hash=sha256:58cd214ed97e413c1bc317674e311170757df695ad1f0d36636780775d72f91a
