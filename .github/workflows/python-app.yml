@@ -12,12 +12,17 @@ jobs:
     - name: Checkout Code
       uses: actions/checkout@v4
 
+    - name: Debug PATH
+      run: |
+        echo $PATH
+        which -a pip
+
     - name: Set up Python
       uses: actions/setup-python@v5
       with:
         python-version: "3.10"
 
-    - name: 1. Install Dependencies
+    - name: Install Dependencies
       # This is the requirement: trigger pip install -r requirements.txt
       # --require-hashes enforces the Chain of Trust
       run: |
@@ -35,7 +40,7 @@ jobs:
     #    scan-type: 'fs'
     #    exit-code: '1' # Fails PR if critical issues are found   
 
-    - name: 4. Safety Audit (Native Python)
+    - name: Safety Audit (Native Python)
       run: |
         pip install safety
         safety check --key ${{ secrets.SAFETY_API_KEY }}
@@ -45,5 +50,5 @@ jobs:
       # with:
         # api-key: ${{ secrets.SAFETY_API_KEY }}
 
-    - name: 5. Run Application
+    - name: Run Application
       run: python app.py        
