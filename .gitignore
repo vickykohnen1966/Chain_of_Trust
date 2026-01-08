@@ -1,0 +1,11 @@
+# Virtual Environment
+venv/
+
+# Python Cache
+__pycache__/
+*.py[cod]
+
+# Distribution/Build files (Stage 2)
+utils_lib/dist/
+utils_lib/build/
+utils_lib/*.egg-info/
